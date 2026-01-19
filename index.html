@@ -1,0 +1,2060 @@
+<!--
+/**
+ * @license
+ * Copyright (C) 2026 [岳清源沈清秋结婚推进协会]. All Rights Reserved.
+ * * 【版权声明与使用许可】
+ * 1. 本作品（包括但不限于代码架构、脚本逻辑、美术资源、剧本文字）版权归制作组所有。
+ * 2. 严禁任何形式的未经授权的二次分发、修改、反编译或拆包行为。
+ * 3. 本项目代码具有强烈的原创性与特定角色指向性（岳清源×沈清秋（原主沈九，非沈垣）），
+ * 严禁将其用于其他角色配对（CP）或商业用途。
+ * 4. 任何未经许可的盗用行为，制作组保留追究其法律责任及公开维权的权利。
+ * * Project: [安定峰采购假药引发的惨案]
+ * Developers: @灰灰(程序), @数据(美术), @rosy(脚本), @星河妄想(脚本), @设定(监制)
+ */
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Content Security Policy - 安全策略配置 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://esm.sh;
+        style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.loli.net;
+        img-src 'self' data: blob:;
+        font-src 'self' https://fonts.loli.net https://gstatic.loli.net data:;
+        connect-src 'self' https://fonts.loli.net https://gstatic.loli.net;
+        media-src 'self' blob:;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+    ">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>轮回百世·与秋同归</title>
+    <meta name="description" content="轮回百世，只为与其同归。沈清秋与岳清源的重生故事。">
+    <meta name="keywords" content="视觉小说,修仙,岳清源,沈清秋,轮回,重生">
+    <meta name="author" content="岳清源沈清秋结婚推进协会">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./start_screen.jpg">
+    <link rel="apple-touch-icon" href="./start_screen.jpg">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/HuihuiDreams/qijiugame-formal">
+    <meta property="og:title" content="轮回百世·与秋同归">
+    <meta property="og:description" content="轮回百世，只为与其同归。沈清秋与岳清源的重生故事。">
+    <meta property="og:image" content="./start_screen.jpg">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://github.com/HuihuiDreams/qijiugame-formal">
+    <meta name="twitter:title" content="轮回百世·与秋同归">
+    <meta name="twitter:description" content="轮回百世，只为与其同归。沈清秋与岳清源的重生故事。">
+    <meta name="twitter:image" content="./start_screen.jpg">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#0d0d1a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="轮回百世·与秋同归">
+    <!-- Tailwind CSS - 版本锁定为 3.4.1 -->
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <style>
+        /* 字体导入 - 使用 fonts.loli.net（Google Fonts 镜像） */
+        @import url('https://fonts.loli.net/css2?family=Inter:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Ma+Shan+Zheng&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #0d0d1a;
+            overscroll-behavior: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .font-serif-sc {
+            font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+        }
+
+        .font-calligraphy {
+            font-family: 'Ma Shan Zheng', 'KaiTi', 'STKaiti', cursive;
+        }
+
+        /* 动画与特效 */
+        .fade-enter {
+            opacity: 0;
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transition: opacity 500ms ease-in;
+        }
+
+        .fade-exit {
+            opacity: 1;
+        }
+
+        .fade-exit-active {
+            opacity: 0;
+            transition: opacity 300ms ease-in;
+        }
+
+        .dialogue-glass {
+            background: rgba(13, 13, 26, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(103, 232, 249, 0.3);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 滚动条 */
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(103, 232, 249, 0.3);
+            border-radius: 4px;
+        }
+
+        /* 角色立绘位置调整 */
+        .char-sprite {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+        }
+
+        /* 屏幕震动动画 */
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            10% {
+                transform: translateX(-8px) translateY(-2px) rotate(-0.5deg);
+            }
+
+            20% {
+                transform: translateX(8px) translateY(2px) rotate(0.5deg);
+            }
+
+            30% {
+                transform: translateX(-6px) translateY(-1px) rotate(-0.3deg);
+            }
+
+            40% {
+                transform: translateX(6px) translateY(1px) rotate(0.3deg);
+            }
+
+            50% {
+                transform: translateX(-4px) translateY(-1px) rotate(-0.2deg);
+            }
+
+            60% {
+                transform: translateX(4px) translateY(1px) rotate(0.2deg);
+            }
+
+            70% {
+                transform: translateX(-2px) translateY(0) rotate(-0.1deg);
+            }
+
+            80% {
+                transform: translateX(2px) translateY(0) rotate(0.1deg);
+            }
+
+            90% {
+                transform: translateX(-1px) translateY(0);
+            }
+        }
+
+        .screen-shake {
+            animation: shake 0.6s ease-in-out;
+        }
+
+        /* 有节奏的持续震动动画 */
+        @keyframes rhythm-shake {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(3px);
+            }
+        }
+
+        .screen-rhythm {
+            animation: rhythm-shake 0.5s ease-in-out infinite;
+        }
+
+        /* 移动端优化：确保全屏 */
+        #app-root {
+            height: 100vh;
+            /* fallback */
+            height: 100dvh;
+        }
+
+        /* 手机横屏专用样式 - 全局作用域 */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .mobile-landscape-title {
+                font-size: 1.8rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .mobile-landscape-btn {
+                padding-top: 0.3rem !important;
+                padding-bottom: 0.3rem !important;
+                font-size: 1rem !important;
+            }
+
+            .mobile-landscape-gap {
+                gap: 0.5rem !important;
+                margin-top: 0.5rem !important;
+            }
+
+            /* Ending Screen 特定样式 - 使用绝对定位布局避免弹性盒塌陷 */
+            .ending-title-mobile-landscape {
+                position: absolute !important;
+                top: 0.5rem !important;
+                left: 0 !important;
+                width: 100% !important;
+                margin: 0 !important;
+                font-size: 1.2rem !important;
+                line-height: 1.1 !important;
+                z-index: 10 !important;
+            }
+
+            .ending-text-mobile-landscape {
+                position: absolute !important;
+                top: 3rem !important;
+                bottom: 3rem !important;
+                left: 5% !important;
+                width: 90% !important;
+                margin: 0 !important;
+                padding: 0.5rem !important;
+                font-size: 0.75rem !important;
+                line-height: 1.5 !important;
+                overflow-y: auto !important;
+                max-height: none !important;
+                flex-grow: 0 !important;
+                height: auto !important;
+                background: transparent !important;
+                /* 透明背景 */
+                border: none !important;
+                /* 去除边框 */
+                z-index: 10 !important;
+                display: flex !important;
+                align-items: center !important;
+                /* 垂直居中 */
+                justify-content: center !important;
+                text-align: left !important;
+                /* 水平左对齐 */
+            }
+
+            .ending-btn-mobile-landscape {
+                position: absolute !important;
+                bottom: 0.5rem !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                margin: 0 !important;
+                font-size: 0.75rem !important;
+                padding: 0.25rem 1.5rem !important;
+                z-index: 10 !important;
+                white-space: nowrap !important;
+            }
+
+            .ending-container-mobile-landscape {
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                height: 100% !important;
+                padding: 0 !important;
+                justify-content: unset !important;
+                align-items: unset !important;
+            }
+
+            /* 手机横屏：对话框进一步压缩 */
+            .dialogue-glass {
+                height: 4.8rem !important;
+                /* Slightly increased height */
+                padding: 0.4rem 0.6rem !important;
+                /* Increased padding */
+            }
+
+            .dialogue-glass>div:first-child {
+                padding-top: 0 !important;
+            }
+
+            .dialogue-glass p {
+                font-size: 0.8rem !important;
+                line-height: 1.3 !important;
+                margin-top: -0.1rem !important;
+            }
+
+            /* 手机横屏：隐藏菜单文字 */
+            .menu-label {
+                display: none !important;
+            }
+
+            /* 手机横屏：音量按钮位置调整 */
+            .volume-btn-mobile {
+                top: 0.2rem !important;
+                right: 0.2rem !important;
+                padding: 0.25rem !important;
+            }
+
+            /* 手机横屏：快捷菜单位置调整 */
+            .mobile-landscape-bottom-adjust {
+                bottom: 5rem !important;
+                right: 0.5rem !important;
+                gap: 0.5rem !important;
+            }
+
+            /* 手机横屏：存档界面强制2列 */
+            .mobile-landscape-grid-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
+
+        /* 🚫 防盗增强：禁止图片拖拽和长按 */
+        img {
+            pointer-events: none;
+            /* 让点击穿透至父容器，防止长按单独选中图片 */
+            -webkit-user-drag: none;
+            /* 禁止拖拽 */
+            user-select: none;
+            -webkit-touch-callout: none;
+            /* 禁止iOS长按菜单 */
+        }
+
+        /* 全局禁止移动端长按系统菜单 */
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            /* 全局禁止选择文本（可选，增强保护） */
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body class="text-slate-100 overflow-hidden">
+    <div id="app-root"></div>
+
+
+
+    <!-- Code Protection & Copyright Warnings -->
+    <script>
+        (function () {
+            // 仅在非本地环境启用保护，以免影响开发调试
+            // If you want to test this locally, comment out the check below
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+            // Console Warning (Always show copyright)
+            const K = ' [岳清源沈清秋结婚推进协会] ';
+            const styleTitle = 'color: #ef4444; font-size: 30px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-family: "Noto Serif SC", serif;';
+            const styleBody = 'color: #94a3b8; font-size: 14px; line-height: 1.5; font-family: sans-serif;';
+            const styleCopy = 'color: #67e8f9; font-size: 12px; font-style: italic;';
+
+            console.log(`%c🛑 警告！STOP!`, styleTitle);
+            console.log(`%c此区域专为开发者调试使用。如果您被告知在此处粘贴任何代码以“解锁隐藏结局”或“获得特殊道具”，那是一个骗局，可能会导致您的存档丢失或数据泄露。`, styleBody);
+            console.log(`%c\n本作品代码及剧本版权归${K}所有。\n严禁任何形式的未经授权的搬运、修改或商业使用。\n\nCopyright (C) 2026${K}. All Rights Reserved.`, styleCopy);
+
+            // UX Deterrents (Skip on localhost)
+            if (isLocal) {
+                console.log('%c🛡️ 开发模式：已自动禁用防复制/防调试保护', 'color: #4ade80; font-weight: bold;');
+                return;
+            }
+
+            // 1. Disable Context Menu (Right Click)
+            document.addEventListener('contextmenu', e => {
+                e.preventDefault();
+                return false;
+            });
+
+            // 2. Disable Keyboard Shortcuts
+            document.addEventListener('keydown', e => {
+                // F12
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                    return false;
+                }
+                // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
+                if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                    e.preventDefault();
+                    return false;
+                }
+                // Ctrl+U (View Source)
+                if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                    e.preventDefault();
+                    return false;
+                }
+                // Ctrl+S (Save Page)
+                if (e.ctrlKey && (e.key === 'S' || e.key === 's')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // 3. Disable Drag/Select (Optional, enforced by CSS user-select: none usually)
+            document.addEventListener('dragstart', e => e.preventDefault());
+        })();
+    </script>
+
+    <!-- 使用 ES Modules 直接加载 Preact 和 htm -->
+    <script type="module">
+
+
+        // 使用 esm.sh 确保依赖版本一致性和正确的 ESM 导出
+        import { h, render, createContext } from 'https://esm.sh/preact@10.19.3';
+        import { useState, useEffect, useRef, useMemo, useContext } from 'https://esm.sh/preact@10.19.3/hooks';
+        import htm from 'https://esm.sh/htm@3.1.1';
+
+        const html = htm.bind(h);
+
+        // --- 全局错误处理 ---
+        // 捕获同步JavaScript错误
+        window.addEventListener('error', (event) => {
+            console.error('🚨 全局错误捕获:', {
+                message: event.message,
+                filename: event.filename,
+                lineno: event.lineno,
+                colno: event.colno,
+                error: event.error
+            });
+
+            // 防止默认的控制台错误输出（可选）
+            // event.preventDefault();
+
+            // 可以在这里显示用户友好的错误提示
+            // showAlert('抱歉，游戏遇到了一个错误。请刷新页面重试。');
+        });
+
+        // 捕获未处理的Promise拒绝
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('🚨 未处理的Promise拒绝:', {
+                reason: event.reason,
+                promise: event.promise
+            });
+
+            // 防止默认的控制台警告
+            // event.preventDefault();
+
+            // 可以在这里显示用户友好的错误提示
+            // showAlert('抱歉，加载资源时出现问题。请检查网络连接后刷新页面。');
+        });
+
+
+        // --- Storage 工具模块 (安全的 localStorage 封装) ---
+        const Storage = {
+            set: (key, value, retryCount = 0) => {
+                // 防止无限递归，最多重试3次
+                const MAX_RETRY = 3;
+
+                try {
+                    localStorage.setItem(key, JSON.stringify(value));
+                    return { success: true };
+                } catch (e) {
+                    if (e.name === 'QuotaExceededError') {
+                        // 存储空间不足，尝试清理最旧的存档
+                        if (retryCount >= MAX_RETRY) {
+                            console.warn('存储空间不足，已尝试清理但仍有问题');
+                            return { success: false, error: 'QuotaExceededError' };
+                        }
+
+                        try {
+                            const keys = Object.keys(localStorage)
+                                .filter(k => k.startsWith('qijiu_save_slot_'))
+                                .map(k => {
+                                    try {
+                                        const itemData = JSON.parse(localStorage.getItem(k));
+                                        return {
+                                            key: k,
+                                            data: itemData,
+                                            timestamp: itemData?.timestamp || 0
+                                        };
+                                    } catch {
+                                        return { key: k, data: null, timestamp: 0 };
+                                    }
+                                })
+                                .filter(item => item.data !== null)
+                                .sort((a, b) => a.timestamp - b.timestamp);
+
+                            if (keys.length > 0) {
+                                localStorage.removeItem(keys[0].key);
+                                // 重试保存，增加重试计数
+                                return Storage.set(key, value, retryCount + 1);
+                            }
+                        } catch (cleanupError) {
+                            console.error('清理存档时出错:', cleanupError);
+                        }
+                        console.warn('存储空间不足，且无法清理旧数据');
+                        return { success: false, error: 'QuotaExceededError' };
+                    } else if (e.name === 'SecurityError') {
+                        console.warn('隐私模式下无法使用 localStorage');
+                        return { success: false, error: 'SecurityError' };
+                    } else {
+                        console.error('Storage error:', e);
+                        return { success: false, error: e.name || 'UnknownError' };
+                    }
+                }
+            },
+            get: (key, defaultValue = null) => {
+                try {
+                    const item = localStorage.getItem(key);
+                    return item ? JSON.parse(item) : defaultValue;
+                } catch (e) {
+                    console.error('Storage read error:', e);
+                    return defaultValue;
+                }
+            },
+            remove: (key) => {
+                try {
+                    localStorage.removeItem(key);
+                    return true;
+                } catch (e) {
+                    console.error('Storage remove error:', e);
+                    return false;
+                }
+            }
+        };
+
+        // --- 常量配置 ---
+        const CONSTANTS = {
+            // 打字机效果速度（毫秒/字符）
+            TYPING_SPEED: {
+                MIN: 10,        // 最快速度
+                MAX: 80,        // 最慢速度
+                DEFAULT: 30     // 默认速度
+            },
+
+            // 自动模式延迟时间（毫秒）
+            AUTO_MODE_DELAY: {
+                BASE: 500,      // 基础延迟
+                PER_CHAR: 80    // 每个字符增加的延迟
+            },
+
+            // localStorage 存储键名 (使用游戏唯一标识符前缀，避免与其他游戏冲突)
+            STORAGE_KEYS: {
+                AUTO_SAVE: 'lunhui_auto_save',
+                SAVE_SLOT_PREFIX: 'lunhui_save_slot_',
+                READ_TEXT: 'lunhui_read_text',
+                UNLOCKED_ENDINGS: 'lunhui_unlocked_endings',
+                UNLOCKED_CHAPTERS: 'lunhui_unlocked_chapters',
+                SETTINGS: 'lunhui_settings'
+            },
+
+            // 动画持续时间（毫秒）
+            ANIMATION: {
+                FADE_DURATION: 500,         // 淡入淡出
+                SHAKE_DURATION: 600,        // 震动效果
+                RHYTHM_DURATION: 500,       // 节奏震动
+                PRELOADER_DELAY: 500        // 预加载完成后的延迟
+            },
+
+            // 保存槽位配置
+            SAVE_SLOTS: {
+                MAX_SLOTS: 10               // 最大存档槽位数
+            }
+        };
+
+        // --- 资源配置 (保持原资源) ---
+        const ASSETS = {
+            bg: {
+                qingjing_night: './qingjingpeaknight.png',
+                system_space: './black.png', // Pure black background image
+                start: './start_screen.jpg', // Original start screen
+                kiss: './ending_b.png'
+            },
+            char: {
+                sqq: {
+                    v1: './sqq_1.png',        // Normal
+                    v2: './sqq_2.png',        // Eyes closed
+                    v3: './sqq_3.png',        // Flush
+                    v4: './sqq_4.png',        // Shocked
+                    v5: './sqq_5.png'         // Shame
+                },
+                yqy: './yueqingyuan.png',
+                system: './xitong.PNG'
+            },
+            audio: { // Keep existing audio for now
+                bgm: './baheng.mp3',
+                boom: './boom.mp3',
+                fan: './fan.mp3',
+                splash: './splash.mp3',
+                cloth: './cloth.mp3',
+                sword: './sword.mp3',
+                magic: './magic.mp3',
+                pipa: './pipa.mp3'
+            }
+        };
+
+        // --- 剧本数据 (Structure Refined) ---
+        const SCENES = {
+            'chapter0': {
+                lines: [
+                    { speaker: '旁白', text: "沈九被赐名沈清秋，成为清静峰首席当天。", mood: 'narrative', bg: ASSETS.bg.qingjing_night },
+                    { speaker: '旁白', text: "是夜。沈清秋终于忙完了，回到自己住处，却看见了此生无比厌烦的一个人——岳清源。", mood: 'narrative' },
+                    { speaker: '旁白', text: "沈清秋本想直接忽视他，直接进屋舍休息，忙了一天，他很累了。", mood: 'narrative' },
+                    { speaker: '旁白', text: "两人即将擦肩而过时，岳清源握住了他的手，沈清秋皱眉。", mood: 'narrative' },
+                    { speaker: '沈清秋', text: "放开！恶心。", mood: 'disdain' },
+                    { speaker: '岳清源', text: "小九，我们一定要这样吗？", mood: 'worried' },
+                    { speaker: '沈清秋', text: "别喊那个名字！我们不应该这样吗？岳清源！我们只能这样……", mood: 'angry' },
+                ],
+                next: 'choice0'
+            },
+            'choice0': {
+                type: 'choice',
+                question: "沈清秋试图甩开岳清源的手。岳清源会？",
+                bg: ASSETS.bg.qingjing_night,
+                options: [
+                    // Option A leads to a text descriptions then returns to force option B
+                    { id: 'A', text: "松手放开沈清秋", next: 'scene_0_A_result' },
+                    { id: 'B', text: "强吻沈清秋", next: 'scene_0_B_result' }
+                ]
+            },
+            'choice0_forced': {
+                type: 'choice',
+                question: "岳清源只能...",
+                bg: ASSETS.bg.qingjing_night,
+                options: [
+                    // Only Option B is available
+                    { id: 'B', text: "强吻沈清秋", next: 'scene_0_B_result' }
+                ]
+            },
+            'scene_0_A_result': {
+                lines: [
+                    { speaker: '旁白', text: "岳清源松开了沈清秋的手，在离开之前，将准备好的首席弟子礼——竹柏剑穗放在沈清秋的屋门口。", mood: 'narrative' },
+                    { speaker: '旁白', text: "沈清秋在人走远之后，才打开门，却发现人并没有走，离竹舍十几步远。两人看见对方都是一愣，十几步好似就是他们一生都无法跨越的距离。", mood: 'narrative' },
+                    { speaker: '旁白', text: "（此路不通，命运强制收束）", mood: 'narrative' }
+                ],
+                next: 'choice0_forced'
+            },
+            'scene_0_B_result': {
+                lines: [
+                    { speaker: '旁白', text: "沈清秋想甩开岳清源，就在这个时候，那原本要离开的人，在松开的瞬间紧紧从沈清秋身后抱住他。", mood: 'narrative' },
+                    { speaker: '旁白', text: "沈清秋大怒，推开岳清源，扇了岳清源一巴掌。", mood: 'narrative' },
+                    { speaker: '旁白', text: "岳清源笑了一声，第一次用灵力压制沈清秋，像是被刺激到了什么，狠狠吻了上去，堵住了那张说不出一句软话的嘴，也堵住了自己解释的机会。", mood: 'narrative', bg: ASSETS.bg.kiss },
+                    { speaker: '旁白', text: "下一次机会，又是什么时候呢？", mood: 'narrative' }
+                ],
+                next: 'scene_0_system_awakening'
+            },
+            'scene_0_system_awakening': {
+                lines: [
+                    { speaker: '旁白', text: "这一夜发生了一件让沈清秋无法用他原来的世界观解释的事情。", mood: 'narrative', bg: ASSETS.bg.system_space },
+                    { speaker: '沈清秋', text: "所以你不是人，对吧。", mood: 'cold', },
+                    { speaker: '系统', text: "……可以这么说。", mood: 'system' },
+                    { speaker: '沈清秋', text: "我凭什么相信你？", mood: 'sorrow' },
+                    { speaker: '系统', text: "你赌不起。你要用岳清源的命来赌我可不可信吗？", mood: 'system' },
+                    { speaker: '旁白', text: "沈清秋陷入了沉思，看着那个光团和莫名其妙的面板，里面甚至还有什么商城……而且乱七八糟的不止这个系统，还有那个吻。", mood: 'narrative' },
+                    { speaker: '沈清秋', text: "（内心）一切都很乱。我确实赌不起...不过，系统所谓的隐藏结局究竟是什么？这个系统的目的又是什么？为什么系统要岳清源消耗寿命？", mood: 'worried' },
+                    { speaker: '沈清秋', text: "（内心）岳清源……岳清源……我们这一辈子纠缠着彼此太久，你还瞒着我什么？太多太多谜团需要自己去理清。", mood: 'sorrow' },
+                    { speaker: '沈清秋', text: "还有其他人有系统吗？", mood: 'confused' },
+                    { speaker: '系统', text: "有。", mood: 'system' },
+                    { speaker: '沈清秋', text: "谁？", mood: 'normal' },
+                    { speaker: '系统', text: "您暂时无权访问，但那人不会阻碍您的选择。", mood: 'system' },
+                    { speaker: '旁白', text: "（序章 完）", mood: 'narrative' }
+                ],
+                next: 'endingWait'
+            },
+            'endingWait': {
+                type: 'ending',
+                title: '未完待续',
+                text: "序章结束。",
+                bg: ASSETS.bg.start
+            }
+        };
+
+        // --- 结局元数据 (用于结局回收) ---
+        const ENDINGS_META = {
+            'endingWait': {
+                id: 'endingWait',
+                title: '未完待续',
+                subtitle: 'Coming Soon',
+                description: '序章结束，后续剧情开发中...',
+                color: 'text-slate-400'
+            }
+        };
+        const TOTAL_ENDINGS = Object.keys(ENDINGS_META).length;
+
+        // --- 章节元数据 (用于章节选择) ---
+        const CHAPTERS_META = {
+            'chapter0': {
+                id: 'chapter0',
+                order: 0,
+                title: '序章：重生',
+                description: '沈九的重生，一切的开始...'
+            }
+        };
+        const TOTAL_CHAPTERS = Object.keys(CHAPTERS_META).length;
+
+        // --- 组件 ---
+
+        // 1. 图标库 (Lucide like)
+        const Icon = ({ path, size = 24, className = "" }) => html`
+            <svg xmlns="http://www.w3.org/2000/svg" width=${size} height=${size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=${className}>
+                ${path}
+            </svg>
+        `;
+        const Icons = {
+            Menu: (p) => html`<${Icon} ...${p} path=${html`<line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" />`} />`,
+            Volume2: (p) => html`<${Icon} ...${p} path=${html`<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" /><path d="M15.54 8.46a5 5 0 0 1 0 7.07" />`} />`,
+            VolumeX: (p) => html`<${Icon} ...${p} path=${html`<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" /><line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />`} />`,
+            Save: (p) => html`<${Icon} ...${p} path=${html`<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" />`} />`,
+            Upload: (p) => html`<${Icon} ...${p} path=${html`<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" />`} />`,
+            RefreshCcw: (p) => html`<${Icon} ...${p} path=${html`<path d="M21 12A9 9 0 0 0 6.19 6.19l-.78-.78" /><path d="M3 12a9 9 0 0 0 14.81 5.81l.78.78" /><path d="M2 17H6v4" /><path d="M22 7H18V3" />`} />`,
+            FileText: (p) => html`<${Icon} ...${p} path=${html`<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><line x1="10" y1="9" x2="8" y2="9" />`} />`,
+            Play: (p) => html`<${Icon} ...${p} path=${html`<polygon points="5 3 19 12 5 21 5 3" />`} />`,
+            Pause: (p) => html`<${Icon} ...${p} path=${html`<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />`} />`,
+            FastForward: (p) => html`<${Icon} ...${p} path=${html`<polygon points="13 19 22 12 13 5 13 19" /><polygon points="2 19 11 12 2 5 2 19" />`} />`,
+            X: (p) => html`<${Icon} ...${p} path=${html`<line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />`} />`,
+            Trash: (p) => html`<${Icon} ...${p} path=${html`<polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />`} />`,
+            ChevronLeft: (p) => html`<${Icon} ...${p} path=${html`<polyline points="15 18 9 12 15 6" />`} />`,
+        };
+
+        // 2. 自定义对话框组件
+        const AlertDialog = ({ message, onClose }) => html`
+            <div 
+                class="fixed inset-0 z-[100] bg-black/80 backdrop-blur flex items-center justify-center animate-in fade-in duration-300" 
+                onClick=${onClose}
+            >
+                <div 
+                    class="bg-slate-900 border border-slate-700 p-6 md:p-8 rounded-xl shadow-2xl max-w-md w-[90%] animate-in zoom-in duration-300" 
+                    onClick=${e => e.stopPropagation()}
+                >
+                    <p class="text-slate-200 mb-6 font-serif-sc text-base md:text-lg leading-relaxed whitespace-pre-wrap">${message}</p>
+                    <div class="flex justify-end">
+                        <button 
+                            onClick=${onClose} 
+                            class="px-6 py-2 bg-cyan-600 hover:bg-cyan-700 rounded transition-colors font-bold text-white"
+                        >
+                            确定
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const ConfirmDialog = ({ message, onConfirm, onCancel }) => {
+            useEffect(() => {
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Escape') onCancel();
+                    if (e.key === 'Enter') onConfirm();
+                };
+                document.addEventListener('keydown', handleKeyDown);
+                return () => document.removeEventListener('keydown', handleKeyDown);
+            }, []);
+
+            return html`
+                <div 
+                    class="fixed inset-0 z-[100] bg-black/80 backdrop-blur flex items-center justify-center animate-in fade-in duration-300" 
+                    onClick=${onCancel}
+                >
+                    <div 
+                        class="bg-slate-900 border border-slate-700 p-6 md:p-8 rounded-xl shadow-2xl max-w-md w-[90%] animate-in zoom-in duration-300" 
+                        onClick=${e => e.stopPropagation()}
+                    >
+                        <p class="text-slate-200 mb-6 font-serif-sc text-base md:text-lg leading-relaxed whitespace-pre-wrap">${message}</p>
+                        <div class="flex gap-4 justify-end">
+                            <button 
+                                onClick=${onCancel} 
+                                class="px-6 py-2 bg-slate-800 hover:bg-slate-700 rounded transition-colors font-bold text-slate-300"
+                            >
+                                取消
+                            </button>
+                            <button 
+                                onClick=${onConfirm} 
+                                class="px-6 py-2 bg-cyan-600 hover:bg-cyan-700 rounded transition-colors font-bold text-white"
+                            >
+                                确认
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // 3. 加载页面
+        const Preloader = ({ onLoadComplete }) => {
+            const [progress, setProgress] = useState(0);
+
+            useEffect(() => {
+                let loaded = 0;
+
+                const isColor = (str) => str && (str.startsWith('#') || str.startsWith('rgb') || ['black', 'white'].includes(str));
+
+                // 收集所有图片资源（正确处理嵌套对象）
+                const bgImages = Object.values(ASSETS.bg).filter(src => !isColor(src));
+                const charImages = [];
+                Object.values(ASSETS.char).forEach(value => {
+                    if (typeof value === 'string') {
+                        if (!isColor(value)) charImages.push(value);
+                    } else if (typeof value === 'object') {
+                        charImages.push(...Object.values(value).filter(src => !isColor(src)));
+                    }
+                });
+
+                const images = [...bgImages, ...charImages];
+                const total = images.length;
+
+                if (images.length === 0) {
+                    onLoadComplete();
+                    return;
+                }
+
+                images.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                    img.onload = img.onerror = () => {
+                        loaded++;
+                        setProgress(Math.floor((loaded / total) * 100));
+                        if (loaded === total) {
+                            setTimeout(onLoadComplete, CONSTANTS.ANIMATION.PRELOADER_DELAY);
+                        }
+                    };
+                });
+            }, []);
+
+            return html`
+                <div class="fixed inset-0 z-50 bg-slate-950 flex flex-col items-center justify-center">
+                    <div class="w-64 h-1 bg-slate-800 rounded-full overflow-hidden mb-4">
+                        <div class="h-full bg-cyan-500 transition-all duration-300" style=${{ width: `${progress}%` }}></div>
+                    </div>
+                    <div class="text-slate-500 font-serif-sc tracking-widest text-sm animate-pulse">正在载入资源 ${progress}%</div>
+                </div>
+            `;
+        };
+
+        // 3. 对话框组件
+        const DialogueBox = ({ speaker, text, onNext, isTyping, typingText, isNarrative, onLog, onAuto, onSkip, isAuto, isSkip, onBack, canGoBack }) => {
+            // 颜色映射
+            const getColors = (name) => {
+                if (name === '沈清秋') return { text: 'text-emerald-300', border: 'border-emerald-600/50' };
+                if (name === '岳清源') return { text: 'text-indigo-300', border: 'border-indigo-600/50' };
+                if (name === '木清芳') return { text: 'text-amber-600', border: 'border-amber-700/50' };
+                if (name === '琵琶女') return { text: 'text-pink-300', border: 'border-pink-600/50' };
+                if (name === '系统') return { text: 'text-sky-300', border: 'border-sky-600/50' };
+                if (name === '旁白') return { text: 'text-amber-200/80', border: 'border-amber-600/30' };
+                return { text: 'text-slate-300', border: 'border-cyan-600/50' };
+            };
+
+            const colors = getColors(speaker);
+
+            return html`
+                <div class="w-full max-w-4xl mx-auto mb-1 px-4 z-30 select-none pb-1" onClick=${onNext}>
+                    <div class="relative">
+                        ${!isNarrative && html`
+                            <div class="absolute bottom-full left-0 mb-0 px-3 py-1 bg-slate-900/90 border border-b-0 ${colors.border} rounded-t text-xs md:text-sm lg:text-lg font-bold ${colors.text} shadow-lg backdrop-blur-sm">
+                                ${speaker}
+                            </div>
+                        `}
+                        <div class="dialogue-glass rounded-lg md:rounded-xl p-1.5 md:p-4 lg:p-8 h-20 md:h-32 lg:h-52 hover:bg-slate-900/40 transition-colors cursor-pointer border ${colors.border} overflow-hidden flex flex-col relative group/box">
+                            <div class="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent pr-1">
+                                <p class="font-serif-sc text-xs md:text-lg lg:text-2xl leading-relaxed whitespace-pre-wrap ${isNarrative ? 'italic text-slate-300' : 'text-slate-100 font-bold'}">
+                                    ${typingText}
+                                    ${isTyping && html`<span class="inline-block w-1.5 h-4 md:w-2 md:h-5 bg-cyan-400 align-middle ml-1 animate-pulse"></span>`}
+                                </p>
+                            </div>
+                            
+                            <!-- 按钮组 (整合进对话框右下角) -->
+                            <div class="absolute bottom-1 right-1 md:bottom-2 md:right-2 flex gap-1 md:gap-2 z-50 opacity-100 md:opacity-0 md:group-hover/box:opacity-100 transition-opacity duration-300" onClick=${e => e.stopPropagation()}>
+                                 <button onClick=${onBack} class="p-1 md:p-1.5 ${canGoBack ? 'bg-slate-800/80 text-cyan-200/80 hover:bg-cyan-900/80 hover:text-cyan-100' : 'bg-slate-800/40 text-slate-600 cursor-not-allowed'} rounded transition-colors" title="上一句" disabled=${!canGoBack}>
+                                    <${Icons.ChevronLeft} size=${14} class="md:w-5 md:h-5" />
+                                </button>
+                                 <button onClick=${onLog} class="p-1 md:p-1.5 bg-slate-800/80 hover:bg-cyan-900/80 rounded text-cyan-200/80 hover:text-cyan-100 transition-colors" title="回放">
+                                    <${Icons.FileText} size=${14} class="md:w-5 md:h-5" />
+                                </button>
+                                <button onClick=${onAuto} class="p-1 md:p-1.5 ${isAuto ? 'bg-cyan-600 text-white' : 'bg-slate-800/80 text-cyan-200/80'} hover:bg-cyan-700 rounded transition-colors" title="自动">
+                                    <${isAuto ? Icons.Pause : Icons.Play} size=${14} class="md:w-5 md:h-5" />
+                                </button>
+                                <button onClick=${onSkip} class="p-1 md:p-1.5 ${isSkip ? 'bg-amber-600 text-white' : 'bg-slate-800/80 text-cyan-200/80'} hover:bg-amber-700 rounded transition-colors" title="快进">
+                                    <${Icons.FastForward} size=${14} class="md:w-5 md:h-5" />
+                                </button>
+                            </div>
+
+                            ${!isTyping && !isAuto && !isSkip && html`
+                                <div class="absolute bottom-1 right-1 md:bottom-4 md:right-4 animate-bounce text-cyan-500/50 pointer-events-none">
+                                    <svg width="12" height="12" class="md:w-4 md:h-4 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h12z"/></svg>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // 4. 开始画面
+        const StartScreen = ({ onStart, onLoad, hasAutoSave, onEndings, onChapters, unlockedEndingsCount, unlockedChaptersCount, totalChapters }) => html`
+            <div class="absolute inset-0 z-40 bg-black flex flex-col items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 animate-in zoom-in duration-[10s]">
+                    <img src=${ASSETS.bg.start} class="w-full h-full object-cover opacity-60" />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                
+                <div class="relative z-50 text-center p-2 md:p-4 flex flex-col items-center gap-1 mobile-landscape-gap md:gap-4 lg:gap-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
+                    <h1 class="font-calligraphy text-2xl mobile-landscape-title sm:text-3xl md:text-7xl text-slate-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] tracking-widest leading-relaxed">
+                        轮回百世<br/>与秋同归
+                    </h1>
+                    
+                    <div class="flex flex-col gap-2 mt-2 mobile-landscape-gap md:mt-4 lg:mt-8 w-full max-w-xs scale-90 md:scale-100">
+                        <button onClick=${() => onStart()} class="px-4 py-1.5 mobile-landscape-btn md:px-8 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-lg md:text-2xl font-calligraphy rounded transition-all tracking-[0.2em] backdrop-blur-sm">
+                            开始新游戏
+                        </button>
+                        
+                        <div class="flex gap-2 w-full">
+                            ${hasAutoSave && html`
+                            <button onClick=${() => onLoad('auto')} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-sm md:text-lg font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                                继续游戏
+                            </button>
+                            `}
+                            <button onClick=${() => onLoad('manual')} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-sm md:text-lg font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                                读取存档
+                            </button>
+                        </div>
+                        
+                        <!-- 新增：结局回收和章节选择 -->
+                        <div class="flex gap-2 w-full mt-1">
+                            <button onClick=${onChapters} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-xs md:text-base font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                                章节选择 <span class="text-cyan-400">${unlockedChaptersCount}/${totalChapters}</span>
+                            </button>
+                            <button onClick=${onEndings} class="flex-1 px-2 py-1.5 mobile-landscape-btn md:px-4 md:py-3 bg-slate-800/50 hover:bg-slate-700/60 border border-slate-500/40 text-slate-100 text-xs md:text-base font-calligraphy rounded transition-all tracking-[0.1em] backdrop-blur-sm">
+                                结局回收 <span class="text-amber-400">${unlockedEndingsCount}/${TOTAL_ENDINGS}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // 5. 选项组件
+        const ChoiceScreen = ({ question, options, onChoice }) => html`
+            <div class="absolute inset-0 z-40 bg-slate-950/80 backdrop-blur flex items-center justify-center p-2 md:p-4">
+                <div class="max-w-4xl w-full md:w-fit bg-slate-900 border-2 border-red-900/50 p-2 md:p-4 lg:p-10 rounded-lg shadow-2xl animate-in zoom-in duration-300 flex flex-col justify-center max-h-full overflow-hidden">
+                    <div class="text-red-500 font-bold mb-1 md:mb-2 lg:mb-6 text-center tracking-widest uppercase text-[10px] md:text-xl lg:text-2xl border-b border-red-900/30 pb-1 shrink-0">命运抉择</div>
+                    <h2 class="text-xs md:text-base lg:text-2xl text-slate-200 font-serif-sc text-center mb-1 md:mb-2 lg:mb-10 leading-relaxed shrink-0">${question}</h2>
+                    
+                    <div class="grid grid-cols-2 gap-2 md:flex md:flex-col md:w-fit md:mx-auto md:gap-4 w-full overflow-y-auto custom-scroll pr-1">
+                        ${options.map(opt => html`
+                            <button onClick=${() => onChoice(opt)} class="group w-full text-left p-2 md:p-3 lg:p-5 border border-slate-700 hover:border-cyan-500 bg-slate-800/50 hover:bg-slate-700 transition-all rounded relative overflow-hidden flex flex-col justify-center min-h-[40px] md:min-h-[60px] lg:min-h-0">
+                                <span class="relative z-10 text-[10px] md:text-sm lg:text-xl font-serif-sc leading-tight mb-0.5 md:mb-1 text-slate-200 group-hover:text-amber-100 transition-colors">${opt.text}</span>
+                                ${opt.subtext && html`<div class="relative z-10 text-[8px] md:text-[10px] lg:text-xs text-slate-500 font-mono group-hover:text-cyan-400 leading-none">${opt.subtext}</div>`}
+                                <div class="absolute inset-0 bg-cyan-900/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"></div>
+                            </button>
+                        `)}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // 9. 存档/读档界面 (Mobile Friendly Grid)
+        const SaveLoadScreen = ({ mode, onClose, onSave, onLoad, saves, onDelete }) => {
+            const isSave = mode === 'save';
+            return html`
+                <div class="absolute inset-0 z-[60] bg-slate-950/95 backdrop-blur flex flex-col p-4 md:p-8 animate-in fade-in duration-300" onClick=${e => e.stopPropagation()}>
+                    <div class="flex justify-between items-center mb-6 shrink-0 border-b border-slate-800 pb-4">
+                        <h2 class="text-2xl md:text-4xl text-slate-100 font-serif-sc font-bold tracking-widest flex items-center gap-4">
+                            ${isSave ? '档案记录' : '档案读取'}
+                            <span class="text-sm md:text-lg text-slate-500 font-sans font-normal tracking-normal self-end mb-1">Select a Slot</span>
+                        </h2>
+                        <button onClick=${onClose} class="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400 hover:text-white">
+                            <${Icons.X} size=${28} />
+                        </button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto custom-scroll pr-2">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-20 mobile-landscape-grid-2">
+                             ${Array.from({ length: 12 }).map((_, i) => {
+                const id = i + 1;
+                const save = saves[id];
+                return html`
+                                    <div class="group relative aspect-[16/10] bg-slate-900 border-2 ${save ? 'border-slate-700 hover:border-cyan-500' : 'border-slate-800 hover:border-slate-600'} rounded-lg transition-all overflow-hidden flex flex-col cursor-pointer hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] transform hover:-translate-y-1"
+                                         onClick=${() => isSave ? onSave(id) : (save && onLoad(id))}
+                                    >
+                                        <!-- Header: ID and Date -->
+                                        <div class="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black/80 to-transparent z-10 flex justify-between items-start text-[10px] md:text-xs">
+                                            <span class="font-bold text-slate-400 font-mono">NO.${id.toString().padStart(2, '0')}</span>
+                                            ${save && html`<span class="text-slate-300 bg-slate-900/50 px-1 rounded backdrop-blur-sm">${new Date(save.timestamp).toLocaleDateString()} ${new Date(save.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>`}
+                                        </div>
+
+                                        <!-- Preview Image -->
+                                        <div class="absolute inset-0 bg-slate-800 flex items-center justify-center overflow-hidden">
+                                            ${save ? html`
+                                                ${(save.bg && (save.bg.startsWith('#') || save.bg.startsWith('rgb') || ['black', 'white'].includes(save.bg)))
+                            ? html`<div class="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity" style="background-color: ${save.bg}"></div>`
+                            : html`<img src=${save.bg} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />`
+                        }
+                                            ` : html`
+                                                <div class="text-slate-700 font-serif-sc text-sm">空存档</div>
+                                            `}
+                                        </div>
+
+                                        <!-- Preview Text (Bottom Overlay) -->
+                                        ${save && html`
+                                            <div class="absolute bottom-0 left-0 right-0 p-2 md:p-3 bg-gradient-to-t from-black/95 via-black/70 to-transparent z-10">
+                                                <div class="text-[10px] md:text-xs text-cyan-300 font-bold mb-0.5 truncate">${save.speaker || '???'}</div>
+                                                <div class="text-[11px] md:text-sm text-slate-300 font-serif-sc line-clamp-2 h-8 md:h-10 leading-tight opacity-90">${save.previewText}</div>
+                                            </div>
+                                        `}
+
+                                        <!-- Action Overlay (Delete) -->
+                                        ${save && html`
+                                            <div class="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <button onClick=${(e) => { e.stopPropagation(); onDelete(id); }} class="p-1.5 bg-red-900/80 hover:bg-red-700 text-red-200 rounded-full backdrop-blur shadow-lg transition-colors" title="删除存档">
+                                                    <${Icons.Trash} size=${14} />
+                                                </button>
+                                            </div>
+                                        `}
+                                        
+                                        <!-- Hover Effect for Empty Save Slot -->
+                                        ${!save && html`
+                                            <div class="absolute inset-0 flex items-center justify-center bg-cyan-900/10 border-2 border-dashed border-cyan-800/50 rounded-lg hover:bg-cyan-900/20 transition-all">
+                                                <span class="text-cyan-400/80 font-bold border border-cyan-500/50 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur shadow-lg">
+                                                    ${mode === 'save' ? '点击新建存档' : '空存档'}
+                                                </span>
+                                            </div>
+                                        `}
+                                    </div>
+                                `;
+            })}
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // 6. 菜单组件 (Modified for new Save/Load)
+        const Menu = ({ onClose, onOpenSave, onOpenLoad, onOpenSettings, onBackTitle }) => html`
+            <div class="absolute inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4" onClick=${onClose}>
+                <div class="bg-slate-900 border border-slate-700 p-4 md:p-8 rounded-xl shadow-2xl w-[260px] md:w-[320px] flex flex-col gap-2 md:gap-4 max-h-full overflow-y-auto custom-scroll" onClick=${e => e.stopPropagation()}>
+                    <h3 class="text-cyan-400 text-lg md:text-xl font-bold mb-1 md:mb-2 text-center shrink-0">系统菜单</h3>
+                    
+                    <button onClick=${onOpenSave} class="w-full p-3 md:p-4 bg-slate-800 hover:bg-cyan-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-cyan-800 tracking-normal font-sans text-center font-bold shrink-0">
+                        保存记录
+                    </button>
+
+                     <button onClick=${onOpenLoad} class="w-full p-3 md:p-4 bg-slate-800 hover:bg-indigo-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-indigo-800 tracking-normal font-sans text-center font-bold shrink-0">
+                        读取记录
+                    </button>
+
+                    <button onClick=${onOpenSettings} class="w-full p-3 md:p-4 bg-slate-800 hover:bg-emerald-900/30 text-slate-200 text-sm md:text-base rounded transition-colors border border-transparent hover:border-emerald-800 tracking-normal font-sans text-center font-bold shrink-0">
+                        设置
+                    </button>
+
+                    <div class="h-px bg-slate-800 my-0 md:my-1 shrink-0"></div>
+                    
+                    <button onClick=${onBackTitle} class="w-full p-3 md:p-4 bg-red-900/20 hover:bg-red-900/40 text-red-300 text-sm md:text-base rounded transition-colors tracking-normal font-sans text-center font-bold shrink-0">
+                        返回标题
+                    </button>
+                    
+                    <button onClick=${onClose} class="mt-2 text-slate-500 hover:text-slate-300 text-sm text-center">
+                        关闭菜单
+                    </button>
+                </div>
+            </div>
+        `;
+
+        // 设置界面
+        const SettingsScreen = ({ textSpeed, onTextSpeedChange, onClose }) => {
+            // Speed ranges: 10 (fast) - 80 (slow). Default is 30.
+            const speedLabels = [
+                { value: 10, label: '极快' },
+                { value: 20, label: '快' },
+                { value: 30, label: '正常' },
+                { value: 50, label: '慢' },
+                { value: 80, label: '极慢' },
+            ];
+            const currentLabel = speedLabels.reduce((prev, curr) =>
+                Math.abs(curr.value - textSpeed) < Math.abs(prev.value - textSpeed) ? curr : prev
+            ).label;
+
+            return html`
+                <div class="absolute inset-0 z-[60] bg-slate-950/95 backdrop-blur flex flex-col items-center justify-center p-4 md:p-8 animate-in fade-in duration-300" onClick=${e => e.stopPropagation()}>
+                    <div class="bg-slate-900 border border-slate-700 p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-md flex flex-col gap-6">
+                        <div class="flex justify-between items-center border-b border-slate-700 pb-4">
+                            <h2 class="text-2xl md:text-3xl text-slate-100 font-serif-sc font-bold">设置</h2>
+                            <button onClick=${onClose} class="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400 hover:text-white">
+                                <${Icons.X} size=${24} />
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-slate-300 font-bold flex justify-between items-center">
+                                    <span>文字速度</span>
+                                    <span class="text-cyan-400 text-sm font-normal bg-slate-800 px-2 py-0.5 rounded">${currentLabel}</span>
+                                </label>
+                                <input 
+                                    type="range" 
+                                    min="10" 
+                                    max="80" 
+                                    step="5"
+                                    value=${textSpeed}
+                                    onInput=${(e) => onTextSpeedChange(parseInt(e.target.value))}
+                                    class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                                />
+                                <div class="flex justify-between text-xs text-slate-500">
+                                    <span>快</span>
+                                    <span>慢</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // 结局回收界面
+        const EndingsScreen = ({ unlockedEndings, onClose, onSelectEnding }) => {
+            const unlockedCount = unlockedEndings.size;
+
+            return html`
+                <div class="absolute inset-0 z-[60] bg-slate-950/95 backdrop-blur flex flex-col p-4 md:p-8 animate-in fade-in duration-300" onClick=${e => e.stopPropagation()}>
+                    <div class="flex justify-between items-center mb-6 shrink-0 border-b border-slate-800 pb-4">
+                        <h2 class="text-2xl md:text-4xl text-slate-100 font-serif-sc font-bold tracking-widest flex items-center gap-4">
+                            结局回收
+                            <span class="text-sm md:text-lg text-cyan-400 font-sans font-normal tracking-normal self-end mb-1 bg-slate-800 px-2 py-0.5 rounded">${unlockedCount} / ${TOTAL_ENDINGS}</span>
+                        </h2>
+                        <button onClick=${onClose} class="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400 hover:text-white">
+                            <${Icons.X} size=${28} />
+                        </button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto custom-scroll pr-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-10">
+                            ${Object.values(ENDINGS_META).map(ending => {
+                const isUnlocked = unlockedEndings.has(ending.id);
+                return html`
+                                    <div class="group relative bg-slate-900 border-2 ${isUnlocked ? 'border-slate-700 hover:border-amber-500 cursor-pointer' : 'border-slate-800 cursor-not-allowed'} rounded-lg p-4 md:p-6 transition-all ${isUnlocked ? 'hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] transform hover:-translate-y-1' : 'opacity-50'}"
+                                         onClick=${() => isUnlocked && onSelectEnding(ending.id)}>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xs md:text-sm ${isUnlocked ? ending.color : 'text-slate-600'} font-bold uppercase tracking-wider">${isUnlocked ? ending.subtitle : '???'}</span>
+                                            ${isUnlocked ? html`
+                                                <span class="text-xs text-green-400 bg-green-900/30 px-2 py-0.5 rounded-full">点击查看</span>
+                                            ` : html`
+                                                <span class="text-xs text-slate-600 bg-slate-800 px-2 py-0.5 rounded-full">未解锁</span>
+                                            `}
+                                        </div>
+                                        <h3 class="text-lg md:text-2xl font-serif-sc font-bold ${isUnlocked ? 'text-slate-100 group-hover:text-amber-200' : 'text-slate-600'} mb-2 transition-colors">
+                                            ${isUnlocked ? ending.title : '???'}
+                                        </h3>
+                                        <p class="text-sm md:text-base ${isUnlocked ? 'text-slate-400' : 'text-slate-700'} font-serif-sc leading-relaxed">
+                                            ${isUnlocked ? ending.description : '达成此结局后解锁'}
+                                        </p>
+                                        ${isUnlocked && html`
+                                            <div class="absolute bottom-4 right-4 text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <polyline points="9 18 15 12 9 6" />
+                                                </svg>
+                                            </div>
+                                        `}
+                                    </div>
+                                `;
+            })}
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // 章节选择界面
+        const ChaptersScreen = ({ unlockedChapters, onClose, onSelectChapter }) => {
+            const unlockedCount = unlockedChapters.size;
+            const sortedChapters = Object.values(CHAPTERS_META).sort((a, b) => a.order - b.order);
+
+            return html`
+                <div class="absolute inset-0 z-[60] bg-slate-950/95 backdrop-blur flex flex-col p-4 md:p-8 animate-in fade-in duration-300" onClick=${e => e.stopPropagation()}>
+                    <div class="flex justify-between items-center mb-6 shrink-0 border-b border-slate-800 pb-4">
+                        <h2 class="text-2xl md:text-4xl text-slate-100 font-serif-sc font-bold tracking-widest flex items-center gap-4">
+                            章节选择
+                            <span class="text-sm md:text-lg text-indigo-400 font-sans font-normal tracking-normal self-end mb-1 bg-slate-800 px-2 py-0.5 rounded">${unlockedCount} / ${TOTAL_CHAPTERS}</span>
+                        </h2>
+                        <button onClick=${onClose} class="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400 hover:text-white">
+                            <${Icons.X} size=${28} />
+                        </button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto custom-scroll pr-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 pb-10">
+                            ${sortedChapters.map(chapter => {
+                const isUnlocked = unlockedChapters.has(chapter.id);
+                return html`
+                                    <div class="group relative bg-slate-900 border-2 ${isUnlocked ? 'border-slate-700 hover:border-indigo-500 cursor-pointer' : 'border-slate-800 cursor-not-allowed'} rounded-lg p-4 md:p-6 transition-all ${isUnlocked ? 'hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] transform hover:-translate-y-1' : 'opacity-50'}"
+                                         onClick=${() => isUnlocked && onSelectChapter(chapter.id)}>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xs md:text-sm text-indigo-400 font-bold uppercase tracking-wider">Chapter ${chapter.order}</span>
+                                            ${isUnlocked ? html`
+                                                <span class="text-xs text-green-400 bg-green-900/30 px-2 py-0.5 rounded-full">已解锁</span>
+                                            ` : html`
+                                                <span class="text-xs text-slate-600 bg-slate-800 px-2 py-0.5 rounded-full">未解锁</span>
+                                            `}
+                                        </div>
+                                        <h3 class="text-lg md:text-2xl font-serif-sc font-bold ${isUnlocked ? 'text-slate-100 group-hover:text-indigo-200' : 'text-slate-600'} mb-2 transition-colors">
+                                            ${isUnlocked ? chapter.title : '???'}
+                                        </h3>
+                                        <p class="text-sm md:text-base ${isUnlocked ? 'text-slate-400' : 'text-slate-700'} font-serif-sc leading-relaxed">
+                                            ${isUnlocked ? chapter.description : '阅读此章节后解锁'}
+                                        </p>
+                                        ${isUnlocked && html`
+                                            <div class="absolute bottom-4 right-4 text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <polyline points="9 18 15 12 9 6" />
+                                                </svg>
+                                            </div>
+                                        `}
+                                    </div>
+                                `;
+            })}
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // 7. 历史记录模态框
+        const HistoryModal = ({ history, onClose }) => {
+            const endRef = useRef(null);
+
+            useEffect(() => {
+                if (endRef.current) {
+                    endRef.current.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, []);
+
+            // 颜色映射（与对话框保持一致）
+            const getSpeakerColor = (name) => {
+                if (name === '沈清秋') return 'text-emerald-300';
+                if (name === '岳清源') return 'text-indigo-300';
+                if (name === '木清芳') return 'text-amber-600';
+                if (name === '系统') return 'text-sky-300';
+                if (name === '旁白') return 'text-amber-200/80';
+                if (name === '琵琶女') return 'text-pink-300';
+                return 'text-slate-300';
+            };
+
+            return html`
+            <div class="absolute inset-0 z-[100] bg-black/90 backdrop-blur flex flex-col p-4 md:p-10 animate-in fade-in duration-300">
+                <div class="flex justify-between items-center mb-4 md:mb-6 border-b border-slate-700 pb-2 md:pb-4 shrink-0">
+                    <h2 class="text-xl md:text-3xl text-slate-100 font-serif-sc font-bold">剧情回放</h2>
+                    <button onClick=${onClose} class="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400 hover:text-white">
+                        <${Icons.X} size=${24} class="md:w-8 md:h-8" />
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto custom-scroll pr-2 md:pr-4 space-y-4 md:space-y-6">
+                    ${history.length === 0 ? html`<div class="text-slate-500 text-center mt-20 italic font-serif-sc">暂无记录</div>` : null}
+                    ${history.map((item, index) => html`
+                        <div class="flex flex-col gap-1 items-start group">
+                            <span class="text-xs md:text-sm font-bold ${getSpeakerColor(item.speaker)} px-2 py-0.5 rounded bg-slate-800/50 border border-slate-700/50">
+                                ${item.speaker || '???'}
+                            </span>
+                            <p class="text-sm md:text-lg text-slate-300 font-serif-sc leading-relaxed bg-slate-900/30 p-2 md:p-3 rounded-lg w-full hover:bg-slate-800/50 transition-colors border-l-2 border-transparent hover:border-cyan-500/50">
+                                ${item.text}
+                            </p>
+                        </div>
+                    `)}
+                    <div ref=${endRef}></div>
+                </div>
+            </div>
+        `};
+
+        // 8. 快捷菜单
+        const QuickMenu = ({ onLog, onAuto, onSkip, isAuto, isSkip }) => html`
+            <div class="absolute bottom-24 md:bottom-36 lg:bottom-56 right-2 md:right-8 z-40 flex gap-2 md:gap-4 mobile-landscape-bottom-adjust">
+                <button onClick=${onLog} class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/80 hover:bg-cyan-900/60 backdrop-blur rounded-full text-xs md:text-sm text-cyan-200 border border-cyan-500/20 hover:border-cyan-400 transition-all shadow-lg group">
+                    <${Icons.FileText} size=${14} class="group-hover:scale-110 transition-transform" />
+                    <span class="font-bold hidden md:inline">回放</span>
+                    <span class="font-bold md:hidden">Log</span>
+                </button>
+                <button onClick=${onAuto} class="flex items-center gap-1.5 px-3 py-1.5 ${isAuto ? 'bg-cyan-600/80 text-white shadow-[0_0_10px_rgba(8,145,178,0.5)]' : 'bg-slate-900/80 text-cyan-200'} hover:bg-cyan-700/80 backdrop-blur rounded-full text-xs md:text-sm border border-cyan-500/20 hover:border-cyan-400 transition-all shadow-lg group">
+                    <${isAuto ? Icons.Pause : Icons.Play} size=${14} class="group-hover:scale-110 transition-transform" />
+                    <span class="font-bold hidden md:inline">${isAuto ? '自动中' : '自动'}</span>
+                    <span class="font-bold md:hidden">Auto</span>
+                </button>
+                <button onClick=${onSkip} class="flex items-center gap-1.5 px-3 py-1.5 ${isSkip ? 'bg-amber-600/80 text-white shadow-[0_0_10px_rgba(217,119,6,0.5)]' : 'bg-slate-900/80 text-cyan-200'} hover:bg-amber-700/80 backdrop-blur rounded-full text-xs md:text-sm border border-cyan-500/20 hover:border-amber-400 transition-all shadow-lg group">
+                    <${Icons.FastForward} size=${14} class="group-hover:scale-110 transition-transform" />
+                    <span class="font-bold hidden md:inline">${isSkip ? '快进中' : '快进'}</span>
+                    <span class="font-bold md:hidden">Skip</span>
+                </button>
+            </div>
+        `;
+
+        // 背景切换组件 (Cross-fade)
+        const BackgroundLayer = ({ src }) => {
+            const [currentSrc, setCurrentSrc] = useState(src);
+            const [nextSrc, setNextSrc] = useState(null);
+            const [isTransitioning, setIsTransitioning] = useState(false);
+
+            useEffect(() => {
+                if (src !== currentSrc) {
+                    setNextSrc(src);
+
+                    // 下一帧启动动画
+                    requestAnimationFrame(() => {
+                        setIsTransitioning(true);
+                    });
+
+                    // 动画结束后更新状态
+                    const timer = setTimeout(() => {
+                        setCurrentSrc(src);
+                        setNextSrc(null);
+                        setIsTransitioning(false);
+                    }, 1000); // 1秒淡入淡出，与 CSS duration 匹配
+
+                    return () => clearTimeout(timer);
+                }
+            }, [src, currentSrc]);
+
+            const isColor = (str) => str && (str.startsWith('#') || str.startsWith('rgb') || ['black', 'white'].includes(str));
+
+            const renderMedia = (source, extraClass = '') => {
+                if (!source) return null;
+                if (isColor(source)) {
+                    // Don't apply brightness filter to pure black
+                    const filterClass = (source === '#000000' || source === 'black') ? '' : 'filter brightness-[0.6]';
+                    return html`<div class="absolute inset-0 w-full h-full ${filterClass} ${extraClass}" style="background-color: ${source}"></div>`;
+                }
+                return html`<img src=${source} class="absolute inset-0 w-full h-full object-cover filter brightness-[0.6] ${extraClass}" />`;
+            };
+
+            return html`
+                <div class="absolute inset-0 z-0 bg-black pointer-events-none select-none">
+                    <!-- 底层：当前显示的背景 -->
+                    ${renderMedia(currentSrc)}
+                    
+                    <!-- 顶层：淡入的新背景 -->
+                    ${renderMedia(nextSrc, `transition-opacity duration-1000 ease-in-out ${isTransitioning ? 'opacity-100' : 'opacity-0'}`)}
+                </div>
+            `;
+        };
+
+        // --- 主逻辑 ---
+        const App = () => {
+            const [isLoading, setIsLoading] = useState(true);
+            const [gameState, setGameState] = useState({
+                sceneId: 'start',
+                lineIndex: 0,
+                bg: ASSETS.bg.start,
+                history: [] // 历史记录
+            });
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+            // Save/Load States
+            const [isSaveLoadOpen, setIsSaveLoadOpen] = useState(false);
+            const [saveLoadMode, setSaveLoadMode] = useState('load'); // 'save' or 'load'
+            const [refreshSaves, setRefreshSaves] = useState(0); // Trigger re-render of saves
+
+            const [typingText, setTypingText] = useState('');
+            const [isTyping, setIsTyping] = useState(false);
+            const [audioEnabled, setAudioEnabled] = useState(false);
+            const [isAuto, setIsAuto] = useState(false);
+            const [isSkip, setIsSkip] = useState(false);
+            const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+            const [isShaking, setIsShaking] = useState(false); // 屏幕震动状态
+            const [isRhythm, setIsRhythm] = useState(false); // 有节奏的震动状态
+            const [isEndingsOpen, setIsEndingsOpen] = useState(false); // 结局回收界面
+
+            // 已读文本记录 (使用 Set 存储已读的唯一标识)
+            const [readTextIds, setReadTextIds] = useState(() => {
+                try {
+                    const saved = Storage.get(READ_TEXT_KEY);
+                    return saved ? new Set(saved) : new Set();
+                } catch {
+                    return new Set();
+                }
+            });
+
+            // 已解锁结局记录
+            const UNLOCKED_ENDINGS_KEY = 'qijiu_unlocked_endings';
+            const [unlockedEndings, setUnlockedEndings] = useState(() => {
+                try {
+                    const saved = Storage.get(UNLOCKED_ENDINGS_KEY);
+                    if (saved) {
+                        // 过滤掉不存在的结局
+                        const validEndings = saved.filter(id => ENDINGS_META[id]);
+                        return new Set(validEndings);
+                    }
+                    return new Set();
+                } catch {
+                    return new Set();
+                }
+            });
+
+            // 已解锁章节记录
+            const UNLOCKED_CHAPTERS_KEY = 'qijiu_unlocked_chapters';
+            const [unlockedChapters, setUnlockedChapters] = useState(() => {
+                try {
+                    const saved = Storage.get(UNLOCKED_CHAPTERS_KEY);
+                    if (saved) {
+                        // 过滤掉不存在的章节
+                        const validChapters = saved.filter(id => CHAPTERS_META[id]);
+                        return new Set(validChapters.length > 0 ? validChapters : ['chapter0']);
+                    }
+                    // 默认解锁第一章
+                    return new Set(['chapter0']);
+                } catch {
+                    return new Set(['chapter0']);
+                }
+            });
+            const [isChaptersOpen, setIsChaptersOpen] = useState(false); // 章节选择界面
+
+            // 对话框状态 (用于替换原生 alert/confirm)
+            const [dialogState, setDialogState] = useState(null);
+
+            // 显示 Alert 对话框
+            const showAlert = (message) => {
+                return new Promise((resolve) => {
+                    setDialogState({
+                        type: 'alert',
+                        message,
+                        onClose: () => {
+                            setDialogState(null);
+                            resolve();
+                        }
+                    });
+                });
+            };
+
+            // 显示 Confirm 对话框
+            const showConfirm = (message) => {
+                return new Promise((resolve) => {
+                    setDialogState({
+                        type: 'confirm',
+                        message,
+                        onConfirm: () => {
+                            setDialogState(null);
+                            resolve(true);
+                        },
+                        onCancel: () => {
+                            setDialogState(null);
+                            resolve(false);
+                        }
+                    });
+                });
+            };
+
+            // Settings
+            const SETTINGS_KEY = 'qijiu_settings';
+            const loadSettings = () => {
+                try {
+                    const saved = Storage.get(SETTINGS_KEY);
+                    return saved || { textSpeed: 30 };
+                } catch { return { textSpeed: 30 }; }
+            };
+            const [textSpeed, setTextSpeed] = useState(() => loadSettings().textSpeed);
+
+            const handleTextSpeedChange = (newSpeed) => {
+                setTextSpeed(newSpeed);
+                const result = Storage.set(SETTINGS_KEY, { textSpeed: newSpeed });
+                if (!result.success) {
+                    console.warn('保存设置失败:', result.error);
+                }
+            };
+
+            const audioRef = useRef(new Audio(ASSETS.audio.bgm));
+            const timerRef = useRef(null);
+            const autoTimerRef = useRef(null);
+
+            const AUTO_SAVE_KEY = 'qijiu_auto_save';
+            const SAVE_SLOT_PREFIX = 'qijiu_save_slot_';
+            const READ_TEXT_KEY = 'qijiu_read_text'; // 已读文本记录
+
+            // 状态历史栈 (用于回退功能)
+            const [stateHistory, setStateHistory] = useState([]);
+
+            // 播放 BGM
+            useEffect(() => {
+                const audio = audioRef.current;
+                audio.loop = true;
+                audio.volume = 0.4;
+                // Init: ensure pause
+                audio.pause();
+                return () => { audio.pause(); };
+            }, []);
+
+            const toggleAudio = (e) => {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                const nextState = !audioEnabled;
+                setAudioEnabled(nextState);
+
+                const audio = audioRef.current;
+                if (nextState) {
+                    // Mobile: Play directly in user event
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.error("Audio play failed / blocked:", error);
+                            setAudioEnabled(false); // Revert state if blocked
+                        });
+                    }
+                } else {
+                    audio.pause();
+                }
+            };
+
+            // Remove previous side-effect for BGM to avoid loop/freeze
+            // useEffect(() => { ... }, [audioEnabled]); 
+
+            // 场景数据获取
+            const currentScene = SCENES[gameState.sceneId];
+            const currentLine = currentScene?.lines ? currentScene.lines[gameState.lineIndex] : null;
+
+            // 打字机与Auto/Skip逻辑
+            useEffect(() => {
+                if (!currentLine) return;
+
+                // 自动解锁当前章节
+                if (CHAPTERS_META[gameState.sceneId] && !unlockedChapters.has(gameState.sceneId)) {
+                    const newUnlocked = new Set(unlockedChapters);
+                    newUnlocked.add(gameState.sceneId);
+                    setUnlockedChapters(newUnlocked);
+                    const result = Storage.set(UNLOCKED_CHAPTERS_KEY, [...newUnlocked]);
+                    if (!result.success) {
+                        console.error('保存章节解锁记录失败:', result.error);
+                    }
+                }
+
+                // 生成当前行的唯一标识
+                const textId = `${gameState.sceneId}_${gameState.lineIndex}`;
+
+                // 检查当前文本是否已读
+                const isCurrentTextRead = readTextIds.has(textId);
+
+                // 如果是Skip模式但遇到未读文本，自动停止Skip
+                if (isSkip && !isCurrentTextRead) {
+                    setIsSkip(false);
+                    // 可选：显示提示
+                    // console.log('遇到未读文本，停止快进');
+                }
+
+                // 背景切换 (已移至 handleNext 预处理)
+                // if (currentLine.bg) {
+                //     setGameState(prev => ({ ...prev, bg: currentLine.bg }));
+                // }
+
+                // 音效
+                if (currentLine.sound && audioEnabled && !isSkip) { // Skip时不播放音效或由浏览器自动处理（可能会堆叠，这里简单处理为不播放）
+                    const sfx = new Audio(currentLine.sound);
+                    sfx.volume = 0.6;
+                    sfx.play().catch(() => { });
+                }
+
+                // 屏幕震动
+                if (currentLine.shake && !isSkip) {
+                    setIsShaking(true);
+                    setTimeout(() => setIsShaking(false), 600);
+                }
+
+                // 有节奏的震动（持续整行文字）
+                if (currentLine.rhythm && !isSkip) {
+                    setIsRhythm(true);
+                } else {
+                    setIsRhythm(false);
+                }
+
+                const text = currentLine.text;
+
+                // 如果是Skip模式且文本已读，直接显示全部
+                if (isSkip && isCurrentTextRead) {
+                    setTypingText(text);
+                    setIsTyping(false);
+
+                    // 极短延迟后跳转
+                    if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
+                    autoTimerRef.current = setTimeout(() => {
+                        handleNext(true); // true 表示自动触发
+                    }, 100);
+                    return;
+                }
+
+                setTypingText('');
+                setIsTyping(true);
+                let idx = 0;
+
+                if (timerRef.current) clearInterval(timerRef.current);
+
+                // 正常打字 - 使用 textSpeed 变量
+                timerRef.current = setInterval(() => {
+                    if (idx < text.length) {
+                        setTypingText(text.substring(0, idx + 1));
+                        idx++;
+                    } else {
+                        setIsTyping(false);
+                        clearInterval(timerRef.current);
+                    }
+                }, textSpeed);
+
+                return () => {
+                    clearInterval(timerRef.current);
+                    if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
+                };
+            }, [gameState.lineIndex, gameState.sceneId, isSkip]); // 移除 readTextIds 和 audioEnabled 以防止打字中途重置
+
+            // Auto Mode 监听
+            useEffect(() => {
+                if (isAuto && !isTyping && !isSkip && currentScene?.lines) {
+                    // 计算阅读时间：基础0.5秒 + 每字80ms (大幅加快)
+                    const delay = 500 + (currentLine?.text?.length || 0) * 80;
+                    if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
+                    autoTimerRef.current = setTimeout(() => {
+                        handleNext(true);
+                    }, delay);
+                }
+                return () => {
+                    if (autoTimerRef.current && !isSkip) clearTimeout(autoTimerRef.current);
+                };
+            }, [isAuto, isTyping, gameState.lineIndex]); // 依赖 lineIndex 确保换行后重置定时器
+
+            const prevGameState = useRef({ sceneId: 'start' });
+
+            useEffect(() => {
+                const currentSceneId = gameState.sceneId;
+                if (currentSceneId === 'start') {
+                    prevGameState.current = gameState;
+                    return;
+                }
+                const prevState = prevGameState.current;
+                const prevScene = SCENES[prevState.sceneId];
+                const prevIsChoice = prevScene?.type === 'choice';
+                const prevIsStart = prevState.sceneId === 'start';
+
+                if (!prevIsStart && !prevIsChoice) {
+                    const result = Storage.set(AUTO_SAVE_KEY, {
+                        ...prevState,
+                        timestamp: Date.now()
+                    });
+                    if (!result.success) {
+                        console.warn('自动存档失败:', result.error);
+                    }
+                }
+                prevGameState.current = gameState;
+            }, [gameState]);
+
+
+            // --- New Save/Load Logic ---
+            const getAllSaves = () => {
+                const saves = {};
+                for (let i = 1; i <= 12; i++) {
+                    const data = Storage.get(`${SAVE_SLOT_PREFIX}${i}`);
+                    if (data) saves[i] = data;
+                }
+                return saves;
+            };
+
+            const handleSaveSlot = (slotId) => {
+                const existingData = Storage.get(`${SAVE_SLOT_PREFIX}${slotId}`);
+                // Improve prompt logic
+                const promptMsg = existingData
+                    ? `是否覆盖 存档 ${slotId} ?`
+                    : `是否在 存档 ${slotId} 创建新存档?`;
+
+                if (window.confirm(promptMsg)) {
+                    const saveData = {
+                        ...gameState,
+                        timestamp: Date.now(),
+                        previewText: currentLine?.text || '剧情片段',
+                        speaker: currentLine?.speaker || '旁白'
+                    };
+                    const result = Storage.set(`${SAVE_SLOT_PREFIX}${slotId}`, saveData);
+                    if (result.success) {
+                        setRefreshSaves(prev => prev + 1);
+                        alert(`存档 ${slotId} 保存成功！`);
+                    } else {
+                        alert(`存档 ${slotId} 保存失败：${result.error || '未知错误'}`);
+                    }
+                }
+            };
+
+            const handleLoadSlot = (slotId) => {
+                const data = Storage.get(`${SAVE_SLOT_PREFIX}${slotId}`);
+                if (data) {
+                    if (window.confirm(`读取存档 ${slotId} ?\n当前未保存的进度将丢失。`)) {
+                        setGameState(data);
+                        setIsSaveLoadOpen(false);
+                        setIsMenuOpen(false);
+                        setIsHistoryOpen(false);
+                        setIsAuto(false);
+                        setIsSkip(false);
+                    }
+                }
+            };
+
+            const handleDeleteSlot = (slotId) => {
+                if (window.confirm(`确认删除存档 ${slotId} ?`)) {
+                    const success = Storage.remove(`${SAVE_SLOT_PREFIX}${slotId}`);
+                    if (success) {
+                        setRefreshSaves(prev => prev + 1);
+                    } else {
+                        console.warn('删除存档失败');
+                    }
+                }
+            };
+
+            const loadAutoSave = () => {
+                const data = Storage.get(AUTO_SAVE_KEY);
+                if (data) {
+                    setGameState(data);
+                } else {
+                    alert('没有找到自动存档');
+                }
+            };
+
+            // --- Navigation Logic ---
+            const handleNext = (isAutoTrigger = false) => {
+                // 标记当前文本为已读
+                const textId = `${gameState.sceneId}_${gameState.lineIndex}`;
+                if (!readTextIds.has(textId)) {
+                    const newReadTextIds = new Set(readTextIds);
+                    newReadTextIds.add(textId);
+                    setReadTextIds(newReadTextIds);
+                    // 保存到 localStorage
+                    const result = Storage.set(READ_TEXT_KEY, [...newReadTextIds]);
+                    if (!result.success) {
+                        console.error('保存已读记录失败:', result.error);
+                    }
+                }
+
+                // 如果是用户手动点击
+                if (!isAutoTrigger) {
+                    // 如果正在Skip，停止Skip
+                    if (isSkip) setIsSkip(false);
+                    // 如果正在Auto，停止Auto
+                    if (isAuto) setIsAuto(false);
+
+                    if (isTyping) {
+                        clearInterval(timerRef.current);
+                        setTypingText(currentLine.text);
+                        setIsTyping(false);
+                        return;
+                    }
+                }
+
+                if (currentScene.lines) {
+                    // 记录历史
+                    const newHistoryItem = { speaker: currentLine.speaker, text: currentLine.text };
+
+                    // 保存当前状态到历史栈 (用于回退)
+                    setStateHistory(prev => [...prev.slice(-50), { ...gameState }]); // 最多保存50条
+
+                    if (gameState.lineIndex < currentScene.lines.length - 1) {
+                        setGameState(prev => {
+                            const nextLine = currentScene.lines[prev.lineIndex + 1];
+                            return {
+                                ...prev,
+                                lineIndex: prev.lineIndex + 1,
+                                bg: nextLine.bg || prev.bg, // 立即更新背景
+                                history: [...prev.history, newHistoryItem]
+                            };
+                        });
+                    } else {
+                        // 章节结束
+                        if (currentScene.next) {
+                            // 检查下一章是否是Ending或Choice
+                            const nextScene = SCENES[currentScene.next];
+                            // 保存本章最后一句到历史
+                            setGameState(prev => {
+                                const nextBg = nextScene.type === 'choice' ? prev.bg : (nextScene.lines?.[0]?.bg || prev.bg);
+                                const nextHistory = [...prev.history, newHistoryItem];
+                                return {
+                                    sceneId: currentScene.next,
+                                    lineIndex: 0,
+                                    bg: nextBg,
+                                    history: nextHistory
+                                };
+                            });
+                        }
+                    }
+                }
+            };
+
+            // 回退到上一句
+            const handleBack = () => {
+                if (stateHistory.length === 0) return;
+
+                // 停止自动/快进模式
+                setIsAuto(false);
+                setIsSkip(false);
+
+                // 取出上一个状态
+                const prevState = stateHistory[stateHistory.length - 1];
+                setStateHistory(prev => prev.slice(0, -1));
+                setGameState(prevState);
+            };
+
+            const handleChoice = (option) => {
+                // 选项被点击时，停止 Auto/Skip
+                setIsAuto(false);
+                setIsSkip(false);
+
+                const nextScene = SCENES[option.next];
+                setGameState(prev => ({
+                    sceneId: option.next,
+                    lineIndex: 0,
+                    bg: nextScene?.lines?.[0]?.bg || prev.bg,
+                    history: prev.history // 历史记录保留
+                }));
+            };
+
+            const renderContent = () => {
+                if (gameState.sceneId === 'start') {
+                    return html`<${StartScreen} 
+                        onStart=${() => {
+                            setGameState({ sceneId: 'chapter0', lineIndex: 0, bg: ASSETS.bg.qingjing_night, history: [] });
+                            setStateHistory([]); // 清空回退历史
+                        }} 
+                        onLoad=${(type) => {
+                            if (type === 'manual') {
+                                setSaveLoadMode('load');
+                                setIsSaveLoadOpen(true);
+                            } else {
+                                loadAutoSave();
+                            }
+                        }}
+                        hasAutoSave=${!!Storage.get(AUTO_SAVE_KEY)}
+                        onEndings=${() => setIsEndingsOpen(true)}
+                        onChapters=${() => setIsChaptersOpen(true)}
+                        unlockedEndingsCount=${unlockedEndings.size}
+                        unlockedChaptersCount=${unlockedChapters.size}
+                        totalChapters=${TOTAL_CHAPTERS}
+                    />`;
+                }
+
+                if (currentScene?.type === 'choice') {
+                    // Choice时 停止 Auto/Skip (双重保险)
+                    if (isAuto) setIsAuto(false);
+                    if (isSkip) setIsSkip(false);
+                    return html`<${ChoiceScreen} question=${currentScene.question} options=${currentScene.options} onChoice=${handleChoice} />`;
+                }
+
+                if (currentScene?.type === 'ending') {
+                    // 解锁当前结局
+                    if (!unlockedEndings.has(gameState.sceneId)) {
+                        const newUnlocked = new Set(unlockedEndings);
+                        newUnlocked.add(gameState.sceneId);
+                        setUnlockedEndings(newUnlocked);
+                        const result = Storage.set(UNLOCKED_ENDINGS_KEY, [...newUnlocked]);
+                        if (!result.success) {
+                            console.error('保存结局解锁记录失败:', result.error);
+                        }
+                    }
+
+                    // 结局时，重置所有状态
+                    return html`
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/80 z-40 p-2 md:p-8 text-center animate-in fade-in duration-1000">
+                             <div class="ending-container-mobile-landscape max-w-3xl w-full h-full flex flex-col items-center justify-center relative">
+                                <h1 class="ending-title-mobile-landscape text-3xl md:text-5xl font-calligraphy text-amber-500 mb-2 md:mb-6 tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] shrink-0">${currentScene.title}</h1>
+                                ${currentScene.text && html`<p class="ending-text-mobile-landscape text-slate-300 text-sm md:text-xl leading-relaxed text-left mx-auto mb-4 md:mb-10 font-serif-sc p-4 md:p-6 bg-slate-900/50 rounded-lg border border-slate-700/50 overflow-y-auto">${currentScene.text}</p>`}
+                        <button onClick=${() => {
+                            setGameState({ sceneId: 'start', lineIndex: 0, bg: ASSETS.bg.start, history: [] });
+                            setIsAuto(false);
+                            setIsSkip(false);
+                            setStateHistory([]); // 清空回退历史
+                        }} class="ending-btn-mobile-landscape px-6 py-2 md:px-10 md:py-3 bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 border border-slate-500 text-slate-100 rounded text-base md:text-xl font-serif-sc tracking-widest shadow-lg transition-transform hover:scale-105 shrink-0">
+                                    返回标题
+                                </button>
+                             </div>
+                        </div>
+                     `;
+                }
+
+                const speaker = currentLine?.speaker;
+                const isSQQ = speaker === '沈清秋';
+                const isYQY = speaker === '岳清源';
+                const isSystem = speaker === '系统';
+                const isNarrative = !speaker || speaker === '旁白';
+
+                return html`
+                    <div class="absolute inset-0 z-10 flex items-end justify-center pointer-events-none">
+                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${isYQY ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
+                            <img src=${ASSETS.char.yqy} class="char-sprite absolute bottom-0 left-1/2 md:left-[40%] -translate-x-1/2 h-[85%] object-contain object-bottom" />
+                        </div>
+                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${isSystem ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
+                            <img src=${ASSETS.char.system} class="char-sprite absolute bottom-0 left-1/2 -translate-x-1/2 h-[85%] object-contain object-bottom" />
+                        </div>
+                        <div class="w-1/2 h-full max-w-[500px] relative transition-all duration-500 ease-out ${isSQQ ? 'translate-y-0 opacity-100 scale-105 z-20' : 'translate-y-4 opacity-0 scale-95 z-10'}">
+                            ${(() => {
+                        // 沈清秋立绘映射逻辑 (5张图版本)
+                        const mood = currentLine?.mood || 'neutral';
+                        let spriteSrc = ASSETS.char.sqq.v1; // 默认：正常
+
+                        if (['neutral', 'normal', 'cold', 'angry', 'disdain', 'determined', 'narrative'].includes(mood)) {
+                            spriteSrc = ASSETS.char.sqq.v1; // 1. 正常
+                        } else if (['sleep', 'sorrow', 'despair', 'calm', 'thinking'].includes(mood)) {
+                            spriteSrc = ASSETS.char.sqq.v2; // 2. 闭眼
+                        } else if (['pain', 'embarrassed_shy', 'flush'].includes(mood)) {
+                            spriteSrc = ASSETS.char.sqq.v3; // 3. 脸红闭眼
+                        } else if (['worried', 'confused', 'surprised', 'shocked', 'soft', 'hesitant'].includes(mood)) {
+                            spriteSrc = ASSETS.char.sqq.v4; // 4. 眼睛看旁边
+                        } else if (['shame', 'shy', 'flustered', 'dark'].includes(mood)) {
+                            spriteSrc = ASSETS.char.sqq.v5; // 5. 脸红+眼睛看旁边
+                        }
+
+                        return html`<img src=${spriteSrc} class="char-sprite absolute bottom-0 left-1/2 md:left-[60%] -translate-x-1/2 h-[85%] object-contain object-bottom" />`;
+                    })()}
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-0 w-full z-30 pb-0">
+                        <${DialogueBox} 
+                            speaker=${speaker} 
+                            text=${currentLine?.text} 
+                            typingText=${typingText}
+                            isTyping=${isTyping}
+                            onNext=${() => handleNext(false)} 
+                            isNarrative=${isNarrative}
+                            onLog=${() => setIsHistoryOpen(true)}
+                            onAuto=${() => { setIsAuto(!isAuto); setIsSkip(false); }}
+                            onSkip=${() => {
+                        // 检查当前文本是否已读
+                        const textId = `${gameState.sceneId}_${gameState.lineIndex}`;
+                        const canSkip = readTextIds.has(textId);
+                        if (!isSkip && !canSkip) {
+                            // 如果当前文本未读，不允许开启快进
+                            alert('只能快进已读过的剧情哦！');
+                            return;
+                        }
+                        setIsSkip(!isSkip);
+                        setIsAuto(false);
+                    }}
+                            onBack=${handleBack}
+                            canGoBack=${stateHistory.length > 0}
+                            isAuto=${isAuto}
+                            isSkip=${isSkip}
+                        />
+                    </div>
+
+                    <!-- 顶部菜单按钮 (手机端仅图标) -->
+                    <button onClick=${() => setIsMenuOpen(true)} class="absolute top-2 left-2 md:top-4 md:left-4 z-40 p-2 md:px-4 md:py-2 bg-slate-900/80 rounded-full hover:bg-slate-800 text-cyan-500 backdrop-blur border border-cyan-500/30 flex items-center gap-2 shadow-lg transition-all group highlight-none">
+                        <${Icons.Menu} size=${18} />
+                        <span class="menu-label font-bold text-sm group-hover:text-cyan-300 hidden md:inline">菜单</span>
+                    </button>
+                `;
+            };
+
+            return html`
+                <div class="w-full h-full bg-black flex items-center justify-center overflow-hidden relative">
+                    ${isLoading ? html`<${Preloader} onLoadComplete=${() => setIsLoading(false)} />` : null}
+                    
+                    <div class="${`relative shadow-2xl bg-slate-900 overflow-hidden m-auto group/game flex-shrink-0 ${isShaking ? 'screen-shake' : ''} ${isRhythm ? 'screen-rhythm' : ''}`}" 
+                         style="width: min(100%, 177.78dvh); aspect-ratio: 16/9;">
+                        
+                        <${BackgroundLayer} src=${gameState.bg} />
+
+                        ${renderContent()}
+
+                        <button onClick=${toggleAudio} class="volume-btn-mobile absolute top-2 right-2 md:top-4 md:right-4 z-[60] p-2 md:p-3 text-cyan-500 hover:text-cyan-300 transition-all drop-shadow-lg hover:scale-110 active:scale-95" title="音乐开关">
+                             ${audioEnabled ? html`<${Icons.Volume2} size=${24} class="md:w-8 md:h-8 filter drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" />` : html`<${Icons.VolumeX} size=${24} class="md:w-8 md:h-8 text-slate-500 filter drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" />`}
+                        </button>
+
+                        ${isMenuOpen && html`<${Menu}  
+                            onClose=${() => setIsMenuOpen(false)} 
+                            onOpenSave=${() => { setSaveLoadMode('save'); setIsSaveLoadOpen(true); }}
+                            onOpenLoad=${() => { setSaveLoadMode('load'); setIsSaveLoadOpen(true); }}
+                            onOpenSettings=${() => { setIsSettingsOpen(true); setIsMenuOpen(false); }}
+                            onBackTitle=${() => {
+                        setTypingText('');
+                        setIsTyping(false);
+                        setIsAuto(false);
+                        setIsSkip(false);
+                        setIsMenuOpen(false);
+                        setStateHistory([]);
+                        // Slight delay to allow UI to clear before finding scene 'start'
+                        setTimeout(() => {
+                            setGameState({ sceneId: 'start', lineIndex: 0, bg: ASSETS.bg.start, history: [] });
+                        }, 0);
+                    }}
+                        />`}
+
+                        ${isHistoryOpen && html`<${HistoryModal}
+                            history=${gameState.history}
+                            onClose=${() => setIsHistoryOpen(false)}
+                        />`}
+
+                        ${isSaveLoadOpen && html`<${SaveLoadScreen} 
+                            mode=${saveLoadMode}
+                            saves=${getAllSaves()}
+                            onClose=${() => setIsSaveLoadOpen(false)}
+                            onSave=${handleSaveSlot}
+                            onLoad=${handleLoadSlot}
+                            onDelete=${handleDeleteSlot}
+                        />`}
+
+                        ${isSettingsOpen && html`<${SettingsScreen}
+                            textSpeed=${textSpeed}
+                            onTextSpeedChange=${handleTextSpeedChange}
+                            onClose=${() => setIsSettingsOpen(false)}
+                        />`}
+
+                        ${isEndingsOpen && html`<${EndingsScreen}
+                            unlockedEndings=${unlockedEndings}
+                            onClose=${() => setIsEndingsOpen(false)}
+                            onSelectEnding=${(endingId) => {
+                        const ending = SCENES[endingId];
+                        if (ending) {
+                            setGameState({
+                                sceneId: endingId,
+                                lineIndex: 0,
+                                bg: ending.bg || ASSETS.bg.bamboo,
+                                history: []
+                            });
+                            setStateHistory([]);
+                            setIsEndingsOpen(false);
+                        }
+                    }}
+                        />`}
+
+                        ${isChaptersOpen && html`<${ChaptersScreen}
+                            unlockedChapters=${unlockedChapters}
+                            onClose=${() => setIsChaptersOpen(false)}
+                            onSelectChapter=${(chapterId) => {
+                        const chapter = SCENES[chapterId];
+                        if (chapter) {
+                            setGameState({
+                                sceneId: chapterId,
+                                lineIndex: 0,
+                                bg: chapter.lines?.[0]?.bg || ASSETS.bg.qiancao,
+                                history: []
+                            });
+                            setStateHistory([]);
+                            setIsChaptersOpen(false);
+                        }
+                    }}
+                        />`}
+
+                        ${dialogState && dialogState.type === 'alert' && html`
+                            <${AlertDialog} 
+                                message=${dialogState.message} 
+                                onClose=${dialogState.onClose} 
+                            />
+                        `}
+
+                        ${dialogState && dialogState.type === 'confirm' && html`
+                            <${ConfirmDialog} 
+                                message=${dialogState.message} 
+                                onConfirm=${dialogState.onConfirm}
+                                onCancel=${dialogState.onCancel}
+                            />
+                        `}
+                    </div>
+                </div>
+            `;
+        };
+
+        render(html`<${App} />`, document.getElementById('app-root'));
+    </script>
+</body>
+
+</html>
