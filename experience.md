@@ -179,8 +179,95 @@ git push
 
 ---
 
+### 6. 多游戏存档冲突（file:// 协议下 localStorage 共享问题）
+
+**现象**：
+
+- 游戏 A 的存档出现在游戏 B 的存档列表中
+- 删除存档后刷新页面，存档又“复活”了
+- 不同游戏的进度、设置、已读文本等数据相互覆盖
+
+**根本原因**：
+
+1. **`file://` 协议限制**：浏览器将所有通过 `file://` 打开的本地 HTML 文件视为来自同一个“源”（origin），因此它们共享同一个 `localStorage` 存储空间。
+
+2. **键名冲突**：多个游戏使用相同的 `localStorage` 键名（如 `save_slot_1`、`auto_save`），导致数据相互覆盖。
+
+3. **自动迁移功能的副作用**：之前代码中有一个“好心办坏事”的迁移功能，会自动将旧前缀的数据**复制**到新前缀，导致删除存档后又被自动恢复。
+
+**解决方案**：
+
+1. **为每个游戏使用唯一的 localStorage 前缀**：
+
+```javascript
+// 在 CONSTANTS.STORAGE_KEYS 中配置独特前缀
+STORAGE_KEYS: {
+    AUTO_SAVE: 'xiaoshenjiu_auto_save',        // 游戏A
+    SAVE_SLOT_PREFIX: 'xiaoshenjiu_save_slot_',
+    // ...
+}
+
+// 另一个游戏使用不同前缀
+STORAGE_KEYS: {
+    AUTO_SAVE: 'lunhui_auto_save',             // 游戏B
+    SAVE_SLOT_PREFIX: 'lunhui_save_slot_',
+    // ...
+}
+```
+
+1. **启动时删除旧数据，而非迁移**：
+
+```javascript
+// ✅ 正确做法：直接删除旧前缀数据
+useEffect(() => {
+    const OLD_PREFIXES = ['lunhui_', 'qijiu_', 'qiujiu_'];
+    Object.keys(localStorage).forEach(key => {
+        if (OLD_PREFIXES.some(prefix => key.startsWith(prefix))) {
+            localStorage.removeItem(key);  // 删除，不复制
+        }
+    });
+}, []);
+
+// ❌ 错误做法：复制旧数据（会导致存档“复活”）
+// localStorage.setItem(newKey, oldValue);
+```
+
+1. **前缀命名规范**：
+
+| 游戏名称 | 推荐前缀 |
+|---------|---------|
+| 掌门他养了只小沈九 | `xiaoshenjiu_` |
+| 轮回相关游戏 | `lunhui_` |
+
+**注意事项**：
+
+- 部署到不同域名后会自动隔离，无需担心冲突
+- 同时打开多个标签页玩不同游戏时，只要前缀不同就不会干扰
+- 复制引擎代码创建新游戏时，务必修改 `CONSTANTS.STORAGE_KEYS` 中的所有前缀
+
+---
+
+### 6. 多游戏存档冲突（file:// 协议下 localStorage 共享问题）
+
+**现象**：
+
+- 游戏 A 的存档出现在游戏 B 的存档列表中
+- 删除存档后刷新页面，存档又"复活"了
+- 不同游戏的进度、设置、已读文本等数据相互覆盖
+
+**根本原因**：
+
+1. **\ile://\ 协议限制**：浏览器将所有通过 \ile://\ 打开的本地 HTML 文件视为来自同一个"源"（origin），因此它们共享同一个 \localStorage\ 存储空间。
+
+2. **键名冲突**：多个游戏使用相同的 \localStorage\ 键名（如 \save_slot_1\、\uto_save\），导致数据相互覆盖。
+
+3. **自动迁移功能的副作用**：之前代码中有一个"好心办坏事"的迁移功能，会自动将旧前缀的数据**复制**到新前缀，导致删除存档后又被自动恢复。
+
+---
+
 ## 更新日志
 
 - 2026-01-11: 初次创建，记录 Git 操作问题和解决方案
 - 2026-01-12: 新增“思维死循环”问题的排查与预防方案
 - 2026-01-20: 新增“代码替换失败”、“编码乱码”及“大文件操作”经验总结
+- 2026-01-22: 新增“多游戏存档冲突”问题的完整分析与解决方案

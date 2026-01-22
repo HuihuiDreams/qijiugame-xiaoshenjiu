@@ -37,26 +37,25 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>掌门他养了只小沈九</title>
     <meta name="description" content="掌门他养了只小沈九。">
-    <meta name="keywords" content="视觉小说,修仙,岳清源,沈清秋,小沈九，养崽">
+    <meta name="keywords" content="视觉小说,修仙,岳清源,沈清秋,小沈九,养崽">
     <meta name="author" content="岳清源沈清秋结婚推进协会">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./start_screen.png">
     <link rel="apple-touch-icon" href="./start_screen.png">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Social Media Sharing (WeChat, QQ, Weibo, etc.) -->
+    <!-- 国内主流社交平台通用 (基于 Open Graph 标准) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://github.com/HuihuiDreams/qijiugame-xiaoshenjiu">
-    <meta property="og:title" content="掌门他养了只小沈九">
-    <meta property="og:description" content="掌门他养了只小沈九">
+    <meta property="og:title" content="掌门他养了只小沈九 | 岳清源×沈清秋同人视觉小说">
+    <meta property="og:description" content="岳清源×沈清秋同人视觉小说—— 包含多结局与隐藏彩蛋的修仙同人AVG。点击即玩，无需下载。">
     <meta property="og:image" content="./start_screen.png">
     <meta property="og:locale" content="zh_CN">
+    <meta property="og:site_name" content="掌门他养了只小沈九">
 
-    <!-- Twitter Card -->
+    <!-- 微博/通用大图卡片支持 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://github.com/HuihuiDreams/qijiugame-xiaoshenjiu">
-    <meta name="twitter:title" content="掌门他养了只小沈九">
-    <meta name="twitter:description" content="掌门他养了只小沈九">
     <meta name="twitter:image" content="./start_screen.png">
 
     <!-- Additional SEO -->
@@ -1563,21 +1562,9 @@
         const App = () => {
             // --- 状态与初始化 ---
 
-            // 启动时清理旧前缀数据（一次性删除，不迁移）
-            useEffect(() => {
-                const OLD_PREFIXES = ['lunhui_', 'qijiu_', 'qiujiu_', 'fate_reincarnation_'];
-                let deletedCount = 0;
-                Object.keys(localStorage).forEach(key => {
-                    if (OLD_PREFIXES.some(prefix => key.startsWith(prefix))) {
-                        localStorage.removeItem(key);
-                        deletedCount++;
-                        console.log(`已清理旧数据: ${key}`);
-                    }
-                });
-                if (deletedCount > 0) {
-                    console.log(`共清理 ${deletedCount} 条旧数据`);
-                }
-            }, []);
+            // 数据迁移与前缀统一
+
+
             const [isLoading, setIsLoading] = useState(true);
             const [gameState, setGameState] = useState({
                 sceneId: 'start',
